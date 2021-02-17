@@ -68,8 +68,23 @@ function validate() {
   return( true );
 }
 
-/*let form = document.getElementsByTagName("form")[0];
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+let form = document.getElementsByTagName("form")[0];
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
   alert("Formulaire envoyé!");
-});*/
+});
+
+function validate(){
+
+
+var first = document.form['reserve']['first'].value,
+    last = document.form['reserve']['last'].value;
+
+if (first.length <= 3 || first.length >= 12) {
+   alert('Your first name must be between 4 to 11 characters.');
+}
+
+if (last.length <= 3 || last.length >= 12) {
+   alert('Your last name must be between 4 to 11 characters.');
+}
+}
