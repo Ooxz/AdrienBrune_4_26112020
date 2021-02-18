@@ -77,8 +77,8 @@ form.addEventListener("submit", (event) => {
 function validateForm(){
 
 
-var first = document.form['reserve']['first'].value,
-    last = document.form['reserve']['last'].value;
+var first = document.form['reserve']['first'].value;
+var last = document.form['reserve']['last'].value;
 
 if (first.length <= 3 || first.length >= 12) {
    alert('Your first name must be between 4 to 11 characters.');
