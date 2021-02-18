@@ -68,13 +68,13 @@ function validate() {
   return( true );
 }
 
-let form = document.getElementsByTagName("form")[0];
+/*let form = document.getElementsByTagName("form")[0];
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   alert("Formulaire envoyé!");
-});
+});*/
 
-function validate(){
+function validateForm(){
 
 
 var first = document.form['reserve']['first'].value,
