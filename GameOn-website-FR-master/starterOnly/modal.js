@@ -65,6 +65,12 @@ function validate() {
         document.reserve.checkboxreq.focus() ;
         isValid = false;
      }
+     if( document.reserve.email.value != "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" ) {
+      missEmail.textContent = "Email non conforme"
+      missEmail.style.color = "red"
+      document.reserve.email.focus() ;
+      isValid = false; //NEW NE MARCHE PAS
+      }
   return isValid;
 }
 
@@ -82,17 +88,19 @@ event.preventDefault();
 modalbg.style.display = 'none';
 });
 
-/*function validateForm(){
-
-
-var first = document.reserve['reserve']['first'].value;
-var last = document.reserve['reserve']['last'].value;
-
-if (first.length <= 3 || first.length >= 12) {
-   alert('Your first name must be between 4 to 11 characters.');
+function ValidateEmail(inputText) //NEW NE MARCHE PAS
+{
+var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+if(inputText.value.match(mailformat))
+{
+alert("Valid email address!");
+document.reserve.email.focus();
+return true;
 }
-
-if (last.length <= 3 || last.length >= 12) {
-   alert('Your last name must be between 4 to 11 characters.');
+else
+{
+alert("You have entered an invalid email address!");
+document.reserve.email.focus();
+return false;
 }
-}*/
+}
