@@ -71,10 +71,10 @@ function validate() {
         document.reserve.location.focus() ;
         isValid = false;
      }
-     if( document.reserve.checkboxreq.value == "" ) {
+     if( document.reserve.checkBoxReq.value == "" ) {
         missCheck.textContent = "Veuillez accepter les conditions!"
         missCheck.style.color = "red"
-        document.reserve.checkboxreq.focus() ;
+        document.reserve.checkBoxReq.focus() ;
         isValid = false;
      }
      /*if( document.reserve.email.value != "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" ) {
@@ -124,6 +124,7 @@ document.getElementById("email").addEventListener("keyup", emailFunction);
 
 function emailFunction() {
   missEmail.textContent = ""
+  badEmail.textContent = ""
 }
 
 document.getElementById("birthdate").addEventListener("keyup", birthFunction);
@@ -174,6 +175,28 @@ function location6Function() {
   missLocation.textContent = ""
 }
 
+function isNumberKey(evt)
+{
+   var charCode = (evt.which) ? evt.which : event.keyCode
+   if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+
+   return true;
+}
+
+function validateEmail(sEmail) {
+  var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+
+  if(!sEmail.match(reEmail)) {
+    badEmail.textContent = "Email non conforme"
+    badEmail.style.color = "red"
+    document.reserve.email.focus() ;
+    return false;
+  }
+
+  return true;
+
+}
 /*function CheckLength() {
   if (document.getElementById("first").value.length <= 2) {
     missFirst.textContent = "Plus de 2 caractères"
