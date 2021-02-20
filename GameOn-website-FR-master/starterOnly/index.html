@@ -59,6 +59,7 @@
               name="reserve"
               action="index.html"
               method="get"
+              id="formId"
               onsubmit="return validate();"
             >
               <div
@@ -73,6 +74,7 @@
   
                 /><br>
                 <span id="missFirst"></span>
+                <span id="missFirstNbr"></span>
               </div>
               <div
                 class="formData">
@@ -85,6 +87,7 @@
                   minlength="2"
                 /><br>
                 <span id="missLast"></span>
+                <span id="missLastNbr"></span>
               </div>
               <div
                 class="formData">
@@ -111,8 +114,9 @@
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"/><br>
+                <input type="text" class="text-control" id="quantity" name="quantity"/><br>
                 <span id="missQuantity"></span>
+                <span id="numberText"></span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -123,7 +127,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-                  onClick = "valthisform();"
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -135,7 +138,6 @@
                   id="location2"
                   name="location"
                   value="San Francisco"
-                  onClick = "valthisform();"
                 />
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
@@ -147,7 +149,6 @@
                   id="location3"
                   name="location"
                   value="Seattle"
-                  onClick = "valthisform();"
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
@@ -159,7 +160,6 @@
                   id="location4"
                   name="location"
                   value="Chicago"
-                  onClick = "valthisform();"
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
@@ -171,7 +171,6 @@
                   id="location5"
                   name="location"
                   value="Boston"
-                  onClick = "valthisform();"
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
@@ -183,7 +182,6 @@
                   id="location6"
                   name="location"
                   value="Portland"
-                  onClick = "valthisform();"
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>

@@ -23,18 +23,30 @@ function launchModal() {
 
 function validate() {
       let isValid = true;
-  if( document.reserve.first.value == "" ) {
+  if( document.reserve.first.value == "") {
      missFirst.textContent = "Prénom manquant!"
      missFirst.style.color = "red"
      document.reserve.first.focus() ;
      isValid = false;
   }
+  if( document.reserve.first.value.length <= 2) {
+    missFirstNbr.textContent = "Il faut plus de 2 caractères!"
+    missFirstNbr.style.color = "red"
+    document.reserve.first.focus() ;
+    isValid = false;
+ }
   if( document.reserve.last.value == "" ) {
      missLast.textContent = "Nom manquant!"
      missLast.style.color = "red"
      document.reserve.last.focus() ;
      isValid = false;
   }
+  if( document.reserve.last.value.length <= 2) {
+    missLastNbr.textContent = "Il faut plus de 2 caractères!"
+    missLastNbr.style.color = "red"
+    document.reserve.last.focus() ;
+    isValid = false;
+ }
   if( document.reserve.email.value == "" ) {
      missEmail.textContent = "Email manquant!"
      missEmail.style.color = "red"
@@ -47,7 +59,7 @@ function validate() {
       document.reserve.birthdate.focus() ;
       isValid = false;
      }
-     if( document.reserve.quantity.value == "" ) {
+     if( document.reserve.quantity.value == "") {
       missQuantity.textContent = "Nombre de participation manquant!"
       missQuantity.style.color = "red"
       document.reserve.quantity.focus() ;
@@ -65,12 +77,12 @@ function validate() {
         document.reserve.checkboxreq.focus() ;
         isValid = false;
      }
-     if( document.reserve.email.value != "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" ) {
+     /*if( document.reserve.email.value != "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" ) {
       missEmail.textContent = "Email non conforme"
       missEmail.style.color = "red"
       document.reserve.email.focus() ;
       isValid = false; //NEW NE MARCHE PAS
-      }
+      }*/
   return isValid;
 }
 
@@ -83,12 +95,108 @@ form.addEventListener("submit", (event) => {
   }
 });
 
+//fonctionnalitées de la croix pour fermer le formulaire
 document.getElementById('closeButton').addEventListener('click', (event) => {
 event.preventDefault();
 modalbg.style.display = 'none';
 });
 
-function ValidateEmail(inputText) //NEW NE MARCHE PAS
+//ENSEMBLE DE FONCTION POUR ENLEVER ERROR SI ON TAPE AU CLAVIER OU CHECKBOX + CAP AUTO NOM PRENOM
+document.getElementById("first").addEventListener("keyup", FirstName);
+
+function FirstName() {
+  var x = document.getElementById("first");
+  x.value = x.value.toUpperCase(); //all letter in cap
+  missFirst.textContent = "" //remove error comment
+  missFirstNbr.textContent = ""
+}
+
+document.getElementById("last").addEventListener("keyup", LastName);
+
+function LastName() {
+  var x = document.getElementById("last");
+  x.value = x.value.toUpperCase();
+  missLast.textContent = ""
+  missLastNbr.textContent = ""
+}
+
+document.getElementById("email").addEventListener("keyup", emailFunction);
+
+function emailFunction() {
+  missEmail.textContent = ""
+}
+
+document.getElementById("birthdate").addEventListener("keyup", birthFunction);
+
+function birthFunction() {
+  missBirth.textContent = ""
+}
+
+document.getElementById("quantity").addEventListener("keyup", quantityFunction);
+
+function quantityFunction() {
+  missQuantity.textContent = ""
+}
+
+document.getElementById("location1").addEventListener("click", location1Function);
+
+function location1Function() {
+  missLocation.textContent = ""
+}
+
+document.getElementById("location2").addEventListener("click", location2Function);
+
+function location2Function() {
+  missLocation.textContent = ""
+}
+
+document.getElementById("location3").addEventListener("click", location3Function);
+
+function location3Function() {
+  missLocation.textContent = ""
+}
+
+document.getElementById("location4").addEventListener("click", location4Function);
+
+function location4Function() {
+  missLocation.textContent = ""
+}
+
+document.getElementById("location5").addEventListener("click", location5Function);
+
+function location5Function() {
+  missLocation.textContent = ""
+}
+
+document.getElementById("location6").addEventListener("click", location6Function);
+
+function location6Function() {
+  missLocation.textContent = ""
+}
+
+/*function CheckLength() {
+  if (document.getElementById("first").value.length <= 2) {
+    missFirst.textContent = "Plus de 2 caractères"
+    missFirst.style.color = "red"
+    document.reserve.first.focus() ;
+      return false;
+  }
+}*/
+
+//NEW NE MARCHE PAS
+/*function numberValidation() {
+  var n = document.reserve.quantity.value;
+  if (isNaN(n)) {
+    document.getElementById("numberText").innerHTML =
+    "Merci d'entrer un nombre";
+    return false;
+  } else {
+    document.getElementById("numberText").innerHTML = "La valeur est: " +n;
+    return true;
+  }
+}*/
+
+/*function ValidateEmail(inputText) //NEW NE MARCHE PAS
 {
 var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 if(inputText.value.match(mailformat))
@@ -103,4 +211,4 @@ alert("You have entered an invalid email address!");
 document.reserve.email.focus();
 return false;
 }
-}
+}*/
