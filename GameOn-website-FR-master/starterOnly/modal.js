@@ -29,7 +29,7 @@ function validate() {
      document.reserve.first.focus() ;
      isValid = false;
   }
-  if( document.reserve.first.value.length <= 2) {
+  if( document.reserve.first.value.length <= 2 && document.reserve.first.value != "") {
     missFirstNbr.textContent = "Il faut plus de 2 caractères!"
     missFirstNbr.style.color = "red"
     document.reserve.first.focus() ;
@@ -41,7 +41,7 @@ function validate() {
      document.reserve.last.focus() ;
      isValid = false;
   }
-  if( document.reserve.last.value.length <= 2) {
+  if( document.reserve.last.value.length <= 2 && document.reserve.last.value != "") {
     missLastNbr.textContent = "Il faut plus de 2 caractères!"
     missLastNbr.style.color = "red"
     document.reserve.last.focus() ;
@@ -71,18 +71,6 @@ function validate() {
         document.reserve.location.focus() ;
         isValid = false;
      }
-     if( document.reserve.checkBoxReq.value == "" ) {
-        missCheck.textContent = "Veuillez accepter les conditions!"
-        missCheck.style.color = "red"
-        document.reserve.checkBoxReq.focus() ;
-        isValid = false;
-     }
-     /*if( document.reserve.email.value != "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" ) {
-      missEmail.textContent = "Email non conforme"
-      missEmail.style.color = "red"
-      document.reserve.email.focus() ;
-      isValid = false; //NEW NE MARCHE PAS
-      }*/
   return isValid;
 }
 
@@ -175,9 +163,15 @@ function location6Function() {
   missLocation.textContent = ""
 }
 
+document.getElementById("checkbox1").addEventListener("click", checkbox1Function);
+
+function checkbox1Function() {
+  missCheck.textContent = ""
+}
+//Fonction pour qu'uniquement des chiffres soient entrés
 function isNumberKey(evt)
 {
-   var charCode = (evt.which) ? evt.which : event.keyCode
+   var charCode = (evt.which) ? evt.which : evt.keyCode
    if (charCode > 31 && (charCode < 48 || charCode > 57))
       return false;
 
@@ -187,7 +181,7 @@ function isNumberKey(evt)
 function validateEmail(sEmail) {
   var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
-  if(!sEmail.match(reEmail)) {
+  if(!sEmail.match(reEmail) && document.reserve.email.value != "") {
     badEmail.textContent = "Email non conforme"
     badEmail.style.color = "red"
     document.reserve.email.focus() ;
@@ -197,41 +191,14 @@ function validateEmail(sEmail) {
   return true;
 
 }
-/*function CheckLength() {
-  if (document.getElementById("first").value.length <= 2) {
-    missFirst.textContent = "Plus de 2 caractères"
-    missFirst.style.color = "red"
-    document.reserve.first.focus() ;
-      return false;
-  }
-}*/
 
-//NEW NE MARCHE PAS
-/*function numberValidation() {
-  var n = document.reserve.quantity.value;
-  if (isNaN(n)) {
-    document.getElementById("numberText").innerHTML =
-    "Merci d'entrer un nombre";
-    return false;
-  } else {
-    document.getElementById("numberText").innerHTML = "La valeur est: " +n;
+function checkForm(form)
+  {
+    if(!form.checkReq.checked) {
+      missCheck.textContent = "Conditions d'utilisation non cochées!"
+      missCheck.style.color = "red"
+      form.checkReq.focus();
+      return false;
+    }
     return true;
   }
-}*/
-
-/*function ValidateEmail(inputText) //NEW NE MARCHE PAS
-{
-var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-if(inputText.value.match(mailformat))
-{
-alert("Valid email address!");
-document.reserve.email.focus();
-return true;
-}
-else
-{
-alert("You have entered an invalid email address!");
-document.reserve.email.focus();
-return false;
-}
-}*/

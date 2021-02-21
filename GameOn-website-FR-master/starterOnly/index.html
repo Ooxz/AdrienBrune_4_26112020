@@ -60,8 +60,10 @@
               action="index.html"
               method="get"
               id="formId"
-              onsubmit="return validate();"
+              onsubmit="return checkForm(this)" 
             >
+            <!-- j'avais onsubmit="return Validate()" à la place de celui que j'ai mis
+            Je ne sais pa ssi il servait a quelque chose-->
               <div
                 class="formData">
                 <label for="first">Prénom</label><br>
@@ -84,7 +86,7 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
+                  minlength="3"
                 /><br>
                 <span id="missLast"></span>
                 <span id="missLastNbr"></span>
@@ -198,15 +200,14 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  name="checkBoxReq"
-                  checked
-                  required
+                  name="checkReq"
                 />
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
+                <br> 
+                <span id="missCheck"></span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -217,7 +218,7 @@
               <input
                 class="btn-submit"
                 type="submit"
-                class="button"
+                id="submitId"
                 value="C'est parti"
               />
             </form>
