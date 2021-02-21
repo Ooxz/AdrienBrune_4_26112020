@@ -421,6 +421,9 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   min-width: 424px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .hero-content::after {
   content: "";
@@ -451,6 +454,7 @@ input[data-error]::after {
   text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
+  width: 54%;
   margin: 0;
   margin-top: 59px;
 }
@@ -509,7 +513,7 @@ footer {
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
-    padding: 12px 35px;
+    max-width: fit-content;
   }
   .copyrights {
     margin-top: 50px;
