@@ -48,7 +48,7 @@ function validate() {
     isValid = false;
  }
   if( document.reserve.email.value == "" ) {
-     missEmail.textContent = "Email manquant!"
+     missEmail.textContent = "E-mail manquant!"
      missEmail.style.color = "red"
      document.reserve.email.focus() ;
      isValid = false;
@@ -168,21 +168,16 @@ document.getElementById("checkbox1").addEventListener("click", checkbox1Function
 function checkbox1Function() {
   missCheck.textContent = ""
 }
-//Fonction pour qu'uniquement des chiffres soient entrés
-function isNumberKey(evt)
-{
-   var charCode = (evt.which) ? evt.which : evt.keyCode
-   if (charCode > 31 && (charCode < 48 || charCode > 57))
-      return false;
-
-   return true;
+//Fonction pour qu'uniquement des chiffres soient entrés entre 0 et 99
+function validnum(a) {
+  return ((a >= 0) && (a <= 99));
 }
 
 function validateEmail(sEmail) {
   var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
   if(!sEmail.match(reEmail) && document.reserve.email.value != "") {
-    badEmail.textContent = "Email non conforme"
+    badEmail.textContent = "E-mail non conforme"
     badEmail.style.color = "red"
     document.reserve.email.focus() ;
     return false;

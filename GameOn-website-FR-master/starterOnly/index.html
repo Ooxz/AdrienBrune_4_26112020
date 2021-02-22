@@ -63,7 +63,7 @@
               onsubmit="return checkForm(this)" 
             >
             <!-- j'avais onsubmit="return Validate()" à la place de celui que j'ai mis
-            Je ne sais pa ssi il servait a quelque chose-->
+            Je ne sais pa si il servait a quelque chose-->
               <div
                 class="formData">
                 <label for="first">Prénom</label><br>
@@ -118,7 +118,7 @@
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="text" class="text-control" id="quantity" name="quantity" onkeypress="return isNumberKey(event)"/><br>
+                <input type="text" class="text-control" id="quantity" name="quantity" onkeyup='if(!validnum(this.value)) this.value="";'><br>
                 <span id="missQuantity"></span>
                 <span id="numberText"></span>
               </div>
@@ -228,7 +228,7 @@
     </main>
     <footer>
       <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
+        Copyright 2014 - 2021, GameOn Inc.
       </p>
     </footer>
     <script src="modal.js"></script>
