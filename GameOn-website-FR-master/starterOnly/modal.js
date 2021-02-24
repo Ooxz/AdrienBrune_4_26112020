@@ -73,13 +73,13 @@ function validate() {
      }
   return isValid;
 }
-
+//modalbg disapear on submit and modal appear
 let form = document.getElementsByTagName("form")[0];
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (validate()){
    modalbg.style.display = "none",
-  alert("Formulaire envoyé!");
+   modal.style.display = "block";
   }
 });
 
@@ -173,6 +173,7 @@ function validnum(a) {
   return ((a >= 0) && (a <= 99));
 }
 
+//make sure email is valid
 function validateEmail(sEmail) {
   var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
@@ -186,7 +187,7 @@ function validateEmail(sEmail) {
   return true;
 
 }
-
+//make sure conditions are checked (NOT WORKING PROPERLY)
 function checkForm(form)
   {
     if(!form.checkReq.checked) {
@@ -196,4 +197,48 @@ function checkForm(form)
       return false;
     }
     return true;
+  }
+
+  //clicking outside of the modalbg will close it
+  window.onclick = function(event) {
+    if (event.target == modalbg) {
+      modalbg.style.display = "none";
+    }
+  }
+
+  // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that close the modal
+var btn = document.getElementById("thanksBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("closeMod")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+//Close function button "fermer"
+document.getElementById('thanksBtn').addEventListener('click', (event) => {
+  event.preventDefault();
+  modal.style.display = 'none';
+  });
+
+//To close the modal when clicking outside of the modal
+  document.addEventListener(
+    "click",
+    function(event) {
+      // If user clicks outside the modal window, then close modal by calling closeModal()
+      if (
+        !event.target.closest("modal")
+      ) {
+        closeModal()
+      }
+    },
+    false
+  )
+  
+  function closeModal() {
+    document.querySelector(".modal").style.display = "none"
   }
