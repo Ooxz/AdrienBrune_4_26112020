@@ -23,24 +23,30 @@ function launchModal() {
 
 function validate() {
       let isValid = true;
-  if( document.reserve.first.value == "") {
+      isValid = checkForm(document.getElementById('formId'));
+      isValid = checkString(document.reserve.first, "Prénom", missFirst);
+      isValid = checkString(document.reserve.last, "Nom", missLast);
+      /*isValid = checkString(document.reserve.first, missFirstNbr);*/
+      
+      
+  /*if( document.reserve.first.value == "") {
      missFirst.textContent = "Prénom manquant!"
      missFirst.style.color = "red"
      document.reserve.first.focus() ;
      isValid = false;
-  }
+  }*/
   if( document.reserve.first.value.length <= 2 && document.reserve.first.value != "") {
     missFirstNbr.textContent = "Il faut plus de 2 caractères!"
     missFirstNbr.style.color = "red"
     document.reserve.first.focus() ;
     isValid = false;
  }
-  if( document.reserve.last.value == "" ) {
+  /*if( document.reserve.last.value == "" ) {
      missLast.textContent = "Nom manquant!"
      missLast.style.color = "red"
      document.reserve.last.focus() ;
      isValid = false;
-  }
+  }*/
   if( document.reserve.last.value.length <= 2 && document.reserve.last.value != "") {
     missLastNbr.textContent = "Il faut plus de 2 caractères!"
     missLastNbr.style.color = "red"
@@ -241,4 +247,23 @@ document.getElementById('thanksBtn').addEventListener('click', (event) => {
   
   function closeModal() {
     document.querySelector(".modal").style.display = "none"
+  }
+
+  function checkString(entryElt, entryName, errorElt) {
+    let isValid = true;
+    //checkEmpty
+    if (entryElt.value == "") {
+      errorElt.textContent = `${entryName} manquant!`
+      errorElt.style.color = "red"
+      entryElt.focus();
+      isValid = false;
+    }
+    //check Less Than 2
+    if (entryElt.value.lenght <= 2 && entryElt.value != "") {
+      errorElt.textContent = "Il faut plus de 2 caractères!"
+      errorElt.style.color = "red"
+      entryElt.focus();
+      isValid = false;
+  }
+  return isValid
   }
