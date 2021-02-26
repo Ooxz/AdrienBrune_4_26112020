@@ -140,39 +140,9 @@ function quantityFunction() {
   missQuantity.textContent = ""
 }
 
-document.getElementById("location1").addEventListener("click", location1Function);
+document.getElementById("locationsId").addEventListener("click", locationFunction);
 
-function location1Function() {
-  missLocation.textContent = ""
-}
-
-document.getElementById("location2").addEventListener("click", location2Function);
-
-function location2Function() {
-  missLocation.textContent = ""
-}
-
-document.getElementById("location3").addEventListener("click", location3Function);
-
-function location3Function() {
-  missLocation.textContent = ""
-}
-
-document.getElementById("location4").addEventListener("click", location4Function);
-
-function location4Function() {
-  missLocation.textContent = ""
-}
-
-document.getElementById("location5").addEventListener("click", location5Function);
-
-function location5Function() {
-  missLocation.textContent = ""
-}
-
-document.getElementById("location6").addEventListener("click", location6Function);
-
-function location6Function() {
+function locationFunction() {
   missLocation.textContent = ""
 }
 
