@@ -23,10 +23,16 @@ function launchModal() {
 
 function validate() {
       let isValid = true;
-      isValid = checkForm(document.getElementById('formId'));
       isValid = checkString(document.reserve.first, "Prénom", missFirst);
       isValid = checkString(document.reserve.last, "Nom", missLast);
+      isValid = checkString(document.reserve.email, "e-mail", missEmail);
+      isValid = checkString(document.reserve.birthdate, "Date de naissance", missBirth);
+      isValid = checkString(document.reserve.quantity, "Nombre de participation", missQuantity);
+      /*isValid = checkNumber(document.reserve.first, missFirstNbr)*/
+      isValid = checkForm(document.getElementById('formId'));
+      /*isValid = checkString(document.reserve.location, "Choix de la ville", missLocation);*/
       /*isValid = checkString(document.reserve.first, missFirstNbr);*/
+      
       
       
   /*if( document.reserve.first.value == "") {
@@ -41,7 +47,7 @@ function validate() {
     document.reserve.first.focus() ;
     isValid = false;
  }
-  /*if( document.reserve.last.value == "" ) {
+ /* if( document.reserve.last.value == "" ) {
      missLast.textContent = "Nom manquant!"
      missLast.style.color = "red"
      document.reserve.last.focus() ;
@@ -53,24 +59,24 @@ function validate() {
     document.reserve.last.focus() ;
     isValid = false;
  }
-  if( document.reserve.email.value == "" ) {
+ /* if( document.reserve.email.value == "" ) {
      missEmail.textContent = "E-mail manquant!"
      missEmail.style.color = "red"
      document.reserve.email.focus() ;
      isValid = false;
-     }
-     if( document.reserve.birthdate.value == "" ) {
+     }*/
+     /*if( document.reserve.birthdate.value == "" ) {
       missBirth.textContent = "Date de naissance manquante!"
       missBirth.style.color = "red"
       document.reserve.birthdate.focus() ;
       isValid = false;
-     }
-     if( document.reserve.quantity.value == "") {
+     }*/
+     /*if( document.reserve.quantity.value == "") {
       missQuantity.textContent = "Nombre de participation manquant!"
       missQuantity.style.color = "red"
       document.reserve.quantity.focus() ;
       isValid = false;
-     }
+     }*/
      if( document.reserve.location.value == "" ) {
         missLocation.textContent = "Veuillez choisir une ville!"
         missLocation.style.color = "red"
@@ -79,6 +85,7 @@ function validate() {
      }
   return isValid;
 }
+
 //modalbg disapear on submit and modal appear
 let form = document.getElementsByTagName("form")[0];
 form.addEventListener("submit", (event) => {
@@ -193,7 +200,7 @@ function validateEmail(sEmail) {
   return true;
 
 }
-//make sure conditions are checked (NOT WORKING PROPERLY)
+//make sure conditions are checked
 function checkForm(form)
   {
     if(!form.checkReq.checked) {
@@ -258,12 +265,17 @@ document.getElementById('thanksBtn').addEventListener('click', (event) => {
       entryElt.focus();
       isValid = false;
     }
+    return isValid
+  }
+
+  /*function checkNumber(entryElt, entryName, errorElt) {
+    let isValid = true;
     //check Less Than 2
-    if (entryElt.value.lenght <= 2 && entryElt.value != "") {
+   if (entryElt.value.lenght <= 2 && entryElt.value != "") {
       errorElt.textContent = "Il faut plus de 2 caractères!"
       errorElt.style.color = "red"
       entryElt.focus();
       isValid = false;
   }
   return isValid
-  }
+  }*/
