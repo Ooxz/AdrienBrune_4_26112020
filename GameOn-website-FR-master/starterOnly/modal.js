@@ -263,7 +263,7 @@ document.getElementById('thanksBtn').addEventListener('click', (event) => {
       break;
     }
      else if (!radios[i].checked){
-      missLocation.textContent = "Choix d'une ville"
+      missLocation.textContent = "Choix de la ville"
       missLocation.style.color = "red"
       radios.location.focus();
     }
