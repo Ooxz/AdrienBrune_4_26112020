@@ -23,17 +23,18 @@ function launchModal() {
 
 function validate() {
       let isValid = true;
-      isValid = checkString(document.reserve.first, "Prénom", missFirst);
-      isValid = checkString(document.reserve.last, "Nom", missLast);
-      isValid = checkString(document.reserve.email, "e-mail", missEmail);
-      isValid = checkString(document.reserve.birthdate, "Date de naissance", missBirth);
-      isValid = checkString(document.reserve.quantity, "Nombre de participation", missQuantity);
-      /*isValid = checkNumber(document.reserve.first, missFirstNbr)*/
-      isValid = checkForm(document.getElementById('formId'));
-      /*isValid = checkString(document.reserve.location, "Choix de la ville", missLocation);*/
-      /*isValid = checkString(document.reserve.first, missFirstNbr);*/
-      
-      
+      isValidSurname = checkString(document.getElementById('first'), "Prénom", (document.getElementById('missFirst')));
+      isValidName = checkString(document.getElementById('last'), "Nom", (document.getElementById('missLast')));
+      isValidEmail = checkString(document.getElementById('email'), "e-mail", (document.getElementById('missEmail')));
+      isValidBirthdate = checkString(document.getElementById('birthdate'), "Date de naissance", (document.getElementById('missBirth')));
+      isValidQuantity = checkString(document.getElementById('quantity'), "Nombre de participation", (document.getElementById('missQuantity')));
+      isValidFirstLength = checkLength(document.getElementById('first'), (document.getElementById('missFirstNbr')));
+      isValidLastLength = checkLength(document.getElementById('last'), (document.getElementById('missLastNbr')));
+      /*isValidLocation = checkString(document.getElementsByName('location'), "Choix de la ville", (document.getElementById('missLocation')));*/
+      isValidForm = checkForm(document.getElementById('formId'));
+      isValid = isValidSurname && isValidName && isValidEmail && isValidBirthdate && isValidQuantity && isValidFirstLength && isValidForm && isValidLastLength && isValidLocation && isValidForm;
+      return isValid;
+}
       
   /*if( document.reserve.first.value == "") {
      missFirst.textContent = "Prénom manquant!"
@@ -41,24 +42,24 @@ function validate() {
      document.reserve.first.focus() ;
      isValid = false;
   }*/
-  if( document.reserve.first.value.length <= 2 && document.reserve.first.value != "") {
+  /*if( document.reserve.first.value.length <= 2 && document.reserve.first.value != "") {
     missFirstNbr.textContent = "Il faut plus de 2 caractères!"
     missFirstNbr.style.color = "red"
     document.reserve.first.focus() ;
     isValid = false;
- }
+ }*/
  /* if( document.reserve.last.value == "" ) {
      missLast.textContent = "Nom manquant!"
      missLast.style.color = "red"
      document.reserve.last.focus() ;
      isValid = false;
   }*/
-  if( document.reserve.last.value.length <= 2 && document.reserve.last.value != "") {
+  /*if( document.reserve.last.value.length <= 2 && document.reserve.last.value != "") {
     missLastNbr.textContent = "Il faut plus de 2 caractères!"
     missLastNbr.style.color = "red"
     document.reserve.last.focus() ;
     isValid = false;
- }
+ }*/
  /* if( document.reserve.email.value == "" ) {
      missEmail.textContent = "E-mail manquant!"
      missEmail.style.color = "red"
@@ -77,14 +78,14 @@ function validate() {
       document.reserve.quantity.focus() ;
       isValid = false;
      }*/
-     if( document.reserve.location.value == "" ) {
+     /*if( document.reserve.location.value == "" ) {
         missLocation.textContent = "Veuillez choisir une ville!"
         missLocation.style.color = "red"
         document.reserve.location.focus() ;
         isValid = false;
      }
   return isValid;
-}
+}*/
 
 //modalbg disapear on submit and modal appear
 let form = document.getElementsByTagName("form")[0];
@@ -229,6 +230,7 @@ document.getElementById('thanksBtn').addEventListener('click', (event) => {
   function checkString(entryElt, entryName, errorElt) {
     let isValid = true;
     //checkEmpty
+    console.log(entryElt);
     if (entryElt.value == "") {
       errorElt.textContent = `${entryName} manquant!`
       errorElt.style.color = "red"
@@ -238,14 +240,52 @@ document.getElementById('thanksBtn').addEventListener('click', (event) => {
     return isValid
   }
 
-  /*function checkNumber(entryElt, entryName, errorElt) {
+  function checkLength(entryElt, errorElt) {
     let isValid = true;
     //check Less Than 2
-   if (entryElt.value.lenght <= 2 && entryElt.value != "") {
+   if (entryElt.value.length <= 2 && entryElt.value != "") {
       errorElt.textContent = "Il faut plus de 2 caractères!"
       errorElt.style.color = "red"
       entryElt.focus();
       isValid = false;
   }
   return isValid
-  }*/
+  }
+
+  var radios = document.getElementsByName('location');
+
+  for (var i = 0, length = radios.length; i < length; i++) {
+    
+    if (radios[i].checked) {
+      // do whatever you want with the checked radio
+  
+      // only one radio can be logically checked, don't check the rest
+      break;
+    }
+     else if (!radios[i].checked){
+      missLocation.textContent = "Choix d'une ville"
+      missLocation.style.color = "red"
+      radios.location.focus();
+    }
+  }
+
+ /* var radios = document.getElementsByName('location');
+function checkLocation() {
+  let isLocation = true
+  for (var i = 0, length = radios.length; i < length; i++) {
+    
+    if (radios[i].checked) {
+      // do whatever you want with the checked radio
+  
+      // only one radio can be logically checked, don't check the rest
+      break;
+    }
+     else if (!radios[i].checked){
+      missLocation.textContent = "Choix d'une ville"
+      missLocation.style.color = "red"
+      document.reserve.location.focus() ;
+      isLocation = false;
+    }
+  }
+  return isLocation;
+}*/
