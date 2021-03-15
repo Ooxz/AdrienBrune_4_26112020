@@ -23,6 +23,7 @@ function launchModal() {
 
 function validate() {
       let isValid = true;
+      isValidLocation = checkRadio();
       isValidSurname = checkString(document.getElementById('first'), "Prénom", (document.getElementById('missFirst')));
       isValidName = checkString(document.getElementById('last'), "Nom", (document.getElementById('missLast')));
       isValidEmail = checkString(document.getElementById('email'), "e-mail", (document.getElementById('missEmail')));
@@ -30,7 +31,6 @@ function validate() {
       isValidQuantity = checkString(document.getElementById('quantity'), "Nombre de participation", (document.getElementById('missQuantity')));
       isValidFirstLength = checkLength(document.getElementById('first'), (document.getElementById('missFirstNbr')));
       isValidLastLength = checkLength(document.getElementById('last'), (document.getElementById('missLastNbr')));
-      /*isValidLocation = checkString(document.getElementsByName('location'), "Choix de la ville", (document.getElementById('missLocation')));*/
       isValidForm = checkForm(document.getElementById('formId'));
       isValid = isValidSurname && isValidName && isValidEmail && isValidBirthdate && isValidQuantity && isValidFirstLength && isValidForm && isValidLastLength && isValidLocation && isValidForm;
       return isValid;
@@ -141,7 +141,10 @@ function quantityFunction() {
   missQuantity.textContent = ""
 }
 
-document.getElementById("locationsId").addEventListener("click", locationFunction);
+/*document.getElementById("locationsId").addEventListener("click", locationFunction);*/
+Array.from(document.getElementsByName("location")).forEach(element => {
+  element.addEventListener("click", locationFunction)
+})
 
 function locationFunction() {
   missLocation.textContent = ""
@@ -252,22 +255,23 @@ document.getElementById('thanksBtn').addEventListener('click', (event) => {
   return isValid
   }
 
-  var radios = document.getElementsByName('location');
 
-  for (var i = 0, length = radios.length; i < length; i++) {
+function checkRadio(){
+  const radios = document.getElementsByName('location');
+
+  for (let i = 0, length = radios.length; i < length; i++) {
     
     if (radios[i].checked) {
       // do whatever you want with the checked radio
   
       // only one radio can be logically checked, don't check the rest
-      break;
+      return true;
+    } 
     }
-     else if (!radios[i].checked){
-      missLocation.textContent = "Choix de la ville"
-      missLocation.style.color = "red"
-      radios.location.focus();
-    }
-  }
+    missLocation.textContent = "Choix de la ville"
+    missLocation.style.color = "red"
+    return false;
+}
 
  /* var radios = document.getElementsByName('location');
 function checkLocation() {
