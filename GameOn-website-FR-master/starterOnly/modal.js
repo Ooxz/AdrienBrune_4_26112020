@@ -94,8 +94,11 @@ form.addEventListener("submit", (event) => {
   if (validate()){
    modalbg.style.display = "none",
    modal.style.display = "block";
+   form.reset();
   }
 });
+
+
 
 //fonctionnalitées de la croix pour fermer le formulaire
 document.getElementById('closeButton').addEventListener('click', (event) => {
