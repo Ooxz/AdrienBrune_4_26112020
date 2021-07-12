@@ -36,57 +36,7 @@ function validate() {
       return isValid;
 }
       
-  /*if( document.reserve.first.value == "") {
-     missFirst.textContent = "Prénom manquant!"
-     missFirst.style.color = "red"
-     document.reserve.first.focus() ;
-     isValid = false;
-  }*/
-  /*if( document.reserve.first.value.length <= 2 && document.reserve.first.value != "") {
-    missFirstNbr.textContent = "Il faut plus de 2 caractères!"
-    missFirstNbr.style.color = "red"
-    document.reserve.first.focus() ;
-    isValid = false;
- }*/
- /* if( document.reserve.last.value == "" ) {
-     missLast.textContent = "Nom manquant!"
-     missLast.style.color = "red"
-     document.reserve.last.focus() ;
-     isValid = false;
-  }*/
-  /*if( document.reserve.last.value.length <= 2 && document.reserve.last.value != "") {
-    missLastNbr.textContent = "Il faut plus de 2 caractères!"
-    missLastNbr.style.color = "red"
-    document.reserve.last.focus() ;
-    isValid = false;
- }*/
- /* if( document.reserve.email.value == "" ) {
-     missEmail.textContent = "E-mail manquant!"
-     missEmail.style.color = "red"
-     document.reserve.email.focus() ;
-     isValid = false;
-     }*/
-     /*if( document.reserve.birthdate.value == "" ) {
-      missBirth.textContent = "Date de naissance manquante!"
-      missBirth.style.color = "red"
-      document.reserve.birthdate.focus() ;
-      isValid = false;
-     }*/
-     /*if( document.reserve.quantity.value == "") {
-      missQuantity.textContent = "Nombre de participation manquant!"
-      missQuantity.style.color = "red"
-      document.reserve.quantity.focus() ;
-      isValid = false;
-     }*/
-     /*if( document.reserve.location.value == "" ) {
-        missLocation.textContent = "Veuillez choisir une ville!"
-        missLocation.style.color = "red"
-        document.reserve.location.focus() ;
-        isValid = false;
-     }
-  return isValid;
-}*/
-
+  
 //modalbg disapear on submit and modal appear
 let form = document.getElementsByTagName("form")[0];
 form.addEventListener("submit", (event) => {
@@ -276,23 +226,4 @@ function checkRadio(){
     return false;
 }
 
- /* var radios = document.getElementsByName('location');
-function checkLocation() {
-  let isLocation = true
-  for (var i = 0, length = radios.length; i < length; i++) {
-    
-    if (radios[i].checked) {
-      // do whatever you want with the checked radio
-  
-      // only one radio can be logically checked, don't check the rest
-      break;
-    }
-     else if (!radios[i].checked){
-      missLocation.textContent = "Choix d'une ville"
-      missLocation.style.color = "red"
-      document.reserve.location.focus() ;
-      isLocation = false;
-    }
-  }
-  return isLocation;
-}*/
+ 
