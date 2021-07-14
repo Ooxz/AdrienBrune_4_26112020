@@ -1,3 +1,4 @@
+// opening nav in mobile version
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -8,19 +9,19 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const modalbg = document.querySelector(".bground"); //background
+const modalBtn = document.querySelectorAll(".modal-btn"); //button je m'inscris
+const formData = document.querySelectorAll(".formData"); //formulaire
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal)); 
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-
+//function to indicate errors in the form linked with checkradio checkstring checklenght
 function validate() {
       let isValid = true;
       isValidLocation = checkRadio();
@@ -208,16 +209,13 @@ document.getElementById('thanksBtn').addEventListener('click', (event) => {
   return isValid
   }
 
-
+//make sure 1 radio is checked
 function checkRadio(){
   const radios = document.getElementsByName('location');
 
   for (let i = 0, length = radios.length; i < length; i++) {
     
     if (radios[i].checked) {
-      // do whatever you want with the checked radio
-  
-      // only one radio can be logically checked, don't check the rest
       return true;
     } 
     }
