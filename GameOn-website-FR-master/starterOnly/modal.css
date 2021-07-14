@@ -47,6 +47,7 @@ img {
   text-align: center;
   padding: 12px 12px;
   margin: 5px;
+  color: #ff0000;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -88,6 +89,15 @@ img {
     display: block;
     text-align: left;
   }
+  .hero-content{
+    padding: 0!important;
+  }
+  .topnav{
+    margin: 0!important;
+  }
+  main{
+    padding-right: 0px!important;
+  }
 }
 
 
@@ -97,7 +107,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -106,9 +115,7 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
 
@@ -323,7 +330,7 @@ input {
 }
 
 /* Style the arrow inside the select element: */
-.select-selected:after {
+/* .select-selected:after {
   position: absolute;
   content: "";
   top: 10px;
@@ -335,7 +342,7 @@ input {
   border-left-color: #f00;
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
-}
+} */
 
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
